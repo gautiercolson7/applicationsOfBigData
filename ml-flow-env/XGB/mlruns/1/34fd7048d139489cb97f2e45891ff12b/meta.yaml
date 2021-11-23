@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/LOUKILI/Desktop/XGB/mlruns/1/34fd7048d139489cb97f2e45891ff12b/artifacts
+end_time: 1637618565044
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 34fd7048d139489cb97f2e45891ff12b
+run_uuid: 34fd7048d139489cb97f2e45891ff12b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1637618552719
+status: 3
+tags: []
+user_id: LOUKILI
