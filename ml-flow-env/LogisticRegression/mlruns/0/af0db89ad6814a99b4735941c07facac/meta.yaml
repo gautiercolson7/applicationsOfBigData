@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/af0db89ad6814a99b4735941c07facac/artifacts
+end_time: 1637529512571
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: af0db89ad6814a99b4735941c07facac
+run_uuid: af0db89ad6814a99b4735941c07facac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1637529507818
+status: 3
+tags: []
+user_id: LOUKILI
