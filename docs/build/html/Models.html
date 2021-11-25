@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML Models used &mdash; applicationsOfBigData v0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MODELING" href="Notebook.html" />
+    <link rel="prev" title="Feature Engineering" href="FeatureEngineering.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="index.html" class="icon icon-home"> applicationsOfBigData
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Dataset_Info.html">Dataset information and files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataExploration.html">Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FeatureEngineering.html">Feature Engineering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ML Models used</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#xgboost">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-forest">Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gradient-boosting">Gradient Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion"><strong>Conclusion :</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Notebook.html">MODELING</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">applicationsOfBigData</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>ML Models used</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="ml-models-used">
+<h1>ML Models used<a class="headerlink" href="#ml-models-used" title="Permalink to this headline"></a></h1>
+<p>Now that we made changes on our dataset, we can build and train our models easily. We have 3 models to build : XGBoost, Random Forest and Gradient Boosting.&lt;br&gt;</p>
+<section id="xgboost">
+<h2>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline"></a></h2>
+<p>XGBoost is an implementation of gradient boosted decision trees designed for speed and performance.
+So first we need to import all the required library, especially scikit-learn. We can then setup 2 variables (X, y) to store our data and our target.</p>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline"></a></h2>
+<p>Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset.
+We also need to import the RandomForestClassifier module from sklearn, train and predict our model.</p>
+</section>
+<section id="gradient-boosting">
+<h2>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline"></a></h2>
+<p>Gradient boosting classifiers are a group of machine learning algorithms that combine many weak learning models together to create a strong predictive model. Decision trees are usually used when doing gradient boosting.
+Same process here, we are importing the RandomForestClassifier module, train and test our model then.&lt;br&gt;&lt;br&gt;</p>
+</section>
+<section id="conclusion">
+<h2><strong>Conclusion :</strong><a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h2>
+<p>By testing our models, we see that our accuracy for the 3 models are above 0.9, it is satisfying for this exercise, keep in mind that the accuracy of our models are not the main topic here. We are considering this as a decent score for a model very easy to manipulate, with very few columns, regarding the initial datase.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FeatureEngineering.html" class="btn btn-neutral float-left" title="Feature Engineering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Notebook.html" class="btn btn-neutral float-right" title="MODELING" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nadhem KHLIJ Bilal LOUKILI Gautier COLSON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
