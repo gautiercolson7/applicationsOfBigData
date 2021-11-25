@@ -8,8 +8,8 @@ Auteurs : Bilal LOUKILI, Gautier COLSON, Nadhem KHLIJ
 Le but de ce projet est de mettre en place des modèels de machine learning visant à prédire si un prêt peut être accordé à un individu, selon différents critères. Pour cela on s'appuie sur un jeu de données trai net u njeu de données train disponibles directement via la plateforme kaggle.  
 La principale difficulté est de "nettoyer" le dataset, c'est à dire que de nombreuses colonnes sont inutiles ou alors des opérations sont à effectuer dessus. Les 3 modèles à créer sont XGBoost, Random Forest et Gradient Boosting
 
-##Part 1
-# Data exploration
+## Part 1
+### Data exploration
 
 ```python
 df.shape
@@ -56,7 +56,7 @@ plt.show()
 ![3](https://user-images.githubusercontent.com/70965407/143296350-ef7edde3-51af-4bf1-b0db-d00dcdaba0aa.PNG)  
 To show the repartition of the family status  
 
-# Feature engineering
+### Feature engineering
 The main purpose of the project is not to have the more performant model, but to understand how to undustrialize a Machine Learning project with different tools like MLFlow. So due to this, we are going to reduce the number of column, to keep the ones we think are the more relevant. We are aware that by doing this, our model is going to be less efficient, but easier to manipulate.
 
 ```python
@@ -98,4 +98,53 @@ train_final = train_final.drop(columns = ['SK_ID_CURR', 'NAME_CONTRACT_TYPE', 'C
 train_final.head()
 ```
 We also drop the unique ID column which is useless for a machine learning model, and the columns with litteral valeus because now we have them in numerical values. Let's print the head of the dataset now.<br><br>
-![5](https://user-images.githubusercontent.com/70965407/143325883-8af58db3-b974-4c4a-9dac-cac9b4fb7935.PNG)
+![5](https://user-images.githubusercontent.com/70965407/143325883-8af58db3-b974-4c4a-9dac-cac9b4fb7935.PNG)  
+
+### Modeling
+Now that we made changes on our dataset, we can build and train our models easily. We have 3 models to build : XGBoost, Random Forest and Gradient Boosting.<br>
+
+**XGBoost**  
+XGBoost is an implementation of gradient boosted decision trees designed for speed and performance.  
+So first we need to import all the required library, especially scikit-learn. We can then setup 2 variables (X, y) to store our data and our target.  
+```python
+from xgboost import XGBClassifier
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score
+from sklearn.metrics import confusion_matrix, precision_recall_curve, roc_curve, auc, log_loss
+
+X = train_final[['AMT_CREDIT', 'AMT_INCOME_TOTAL', 'Cash loans', 'Revolving loans', 'F', 'M', 'XNA']]
+y = train_final['TARGET']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 2)
+
+# fit model no training data
+model = XGBClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+predictions = [round(value) for value in y_pred]
+accuracy = accuracy_score(y_test, predictions)
+print(accuracy)
+```
+<br>
+
+**Random Forest**  
+Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset.
+We also need to import the RandomForestClassifier module from sklearn, train and predict our model.
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+print("Training Accuracy :", model.score(X_train, y_train))
+print("Testing Accuracy :", model.score(X_test, y_test))
+```  
+<br>
+
+**Gradient Boosting**  
+Gradient boosting classifiers are a group of machine learning algorithms that combine many weak learning models together to create a strong predictive model. Decision trees are usually used when doing gradient boosting.  
+Same process here, we are importing the RandomForestClassifier module, train and test our model then.<br><br>
+
+**Conclusion :**  
+By testing our models, we see that our accuracy for the 3 models are above 0.9, it is satisfying for this exercise, keep in mind that the accuracy of our models are not the main topic here. We are considering this as a decent score for a model very easy to manipulate, with very few columns, regarding the initial datase.
