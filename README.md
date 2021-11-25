@@ -75,5 +75,27 @@ train = train.drop(columns=['FLAG_DOCUMENT_2', 'FLAG_DOCUMENT_3', 'FLAG_DOCUMENT
                    'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE', 'TOTALAREA_MODE', 'WALLSMATERIAL_MODE', 'EMERGENCYSTATE_MODE'])
 ```
 So here basically we are deleting the columns the less important from our point of view, based on the data exploration. Most of theses columns are just irrelevant regarding the target, have very few values, or a disturbing median.
-Then we can work on the remaining columns
+Then we can work on the remaining columns.
 
+```python
+print(train.isnull().sum())
+```
+Here we visualize the number of null cells for each column.  <br><br>
+![4](https://user-images.githubusercontent.com/70965407/143323752-1032fba3-9abd-4497-a5e7-17e999b91ac1.PNG)  
+We see that 4 columns have 1021 null values so we can also delete these columns, too much null values to have a good impact on the target.
+```python
+train = train.drop(columns = ['OBS_30_CNT_SOCIAL_CIRCLE', 'DEF_30_CNT_SOCIAL_CIRCLE', 'OBS_60_CNT_SOCIAL_CIRCLE', 'DEF_60_CNT_SOCIAL_CIRCLE'])
+```
+<br>
+Finally we are going to transform litteral values into numerical ones. With this part of code :  <br><br>
+
+```python
+train_contact_type = pd.get_dummies(train_copy['NAME_CONTRACT_TYPE'])
+train_gender = pd.get_dummies(train_copy['CODE_GENDER'])
+frames = [train_copy, train_contact_type, train_gender]
+train_final = pd.concat(frames, axis = 1)
+train_final = train_final.drop(columns = ['SK_ID_CURR', 'NAME_CONTRACT_TYPE', 'CODE_GENDER'])
+train_final.head()
+```
+We also drop the unique ID column which is useless for a machine learning model, and the columns with litteral valeus because now we have them in numerical values. Let's print the head of the dataset now.<br><br>
+![5](https://user-images.githubusercontent.com/70965407/143325883-8af58db3-b974-4c4a-9dac-cac9b4fb7935.PNG)
