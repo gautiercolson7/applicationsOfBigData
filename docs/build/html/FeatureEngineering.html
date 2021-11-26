@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feature Engineering &mdash; applicationsOfBigData v0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modeling" href="Models.html" />
+    <link rel="prev" title="Data exploration" href="DataExploration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="index.html" class="icon icon-home"> applicationsOfBigData
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Dataset_Info.html">Dataset information and files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataExploration.html">Data exploration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Models.html">Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notebook.html">MODELING</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">applicationsOfBigData</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Feature Engineering</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/FeatureEngineering.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="feature-engineering">
+<h1>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline"></a></h1>
+<p>The main purpose of the project is not to have the more performant model, but to understand how to undustrialize a Machine Learning project with different tools like MLFlow. So due to this, we are going to reduce the number of column, to keep the ones we think are the more relevant. We are aware that by doing this, our model is going to be less efficient, but easier to manipulate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FLAG_DOCUMENT_2&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_3&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_4&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_5&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_6&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FLAG_DOCUMENT_7&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_8&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_9&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_10&#39;</span><span class="p">,</span><span class="s1">&#39;FLAG_DOCUMENT_11&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FLAG_DOCUMENT_12&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_13&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_14&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_15&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_16&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FLAG_DOCUMENT_17&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_18&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_19&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_20&#39;</span><span class="p">,</span> <span class="s1">&#39;FLAG_DOCUMENT_21&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;APARTMENTS_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;BASEMENTAREA_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;YEARS_BEGINEXPLUATATION_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;YEARS_BUILD_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;COMMONAREA_AVG&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;ELEVATORS_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;ENTRANCES_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOORSMAX_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOORSMIN_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;LANDAREA_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;LIVINGAPARTMENTS_AVG&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;LIVINGAREA_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;NONLIVINGAPARTMENTS_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;NONLIVINGAREA_AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;APARTMENTS_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;BASEMENTAREA_MODE&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;YEARS_BEGINEXPLUATATION_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;YEARS_BUILD_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;COMMONAREA_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEVATORS_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;ENTRANCES_MODE&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FLOORSMAX_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOORSMIN_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;LANDAREA_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;LIVINGAPARTMENTS_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;LIVINGAREA_MODE&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;NONLIVINGAPARTMENTS_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;NONLIVINGAREA_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;APARTMENTS_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;BASEMENTAREA_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;YEARS_BEGINEXPLUATATION_MEDI&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;YEARS_BUILD_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;COMMONAREA_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEVATORS_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;ENTRANCES_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOORSMAX_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOORSMIN_MEDI&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;LANDAREA_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;LIVINGAPARTMENTS_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;LIVINGAREA_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;NONLIVINGAPARTMENTS_MEDI&#39;</span><span class="p">,</span> <span class="s1">&#39;NONLIVINGAREA_MEDI&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FONDKAPREMONT_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;HOUSETYPE_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTALAREA_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;WALLSMATERIAL_MODE&#39;</span><span class="p">,</span> <span class="s1">&#39;EMERGENCYSTATE_MODE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>So here basically we are deleting the columns the less important from our point of view, based on the data exploration. Most of theses columns are just irrelevant regarding the target, have very few values, or a disturbing median.
+Then we can work on the remaining columns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Here we visualize the number of null cells for each column.</p>
+<a class="reference internal image-reference" href="_images/3.png"><img alt="_images/3.png" src="_images/3.png" style="width: 49%;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OBS_30_CNT_SOCIAL_CIRCLE&#39;</span><span class="p">,</span> <span class="s1">&#39;DEF_30_CNT_SOCIAL_CIRCLE&#39;</span><span class="p">,</span> <span class="s1">&#39;OBS_60_CNT_SOCIAL_CIRCLE&#39;</span><span class="p">,</span> <span class="s1">&#39;DEF_60_CNT_SOCIAL_CIRCLE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Finally we are going to transform litteral values into numerical ones. With this part of code :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_contact_type</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train_copy</span><span class="p">[</span><span class="s1">&#39;NAME_CONTRACT_TYPE&#39;</span><span class="p">])</span>
+<span class="n">train_gender</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train_copy</span><span class="p">[</span><span class="s1">&#39;CODE_GENDER&#39;</span><span class="p">])</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">train_copy</span><span class="p">,</span> <span class="n">train_contact_type</span><span class="p">,</span> <span class="n">train_gender</span><span class="p">]</span>
+<span class="n">train_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">train_final</span> <span class="o">=</span> <span class="n">train_final</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SK_ID_CURR&#39;</span><span class="p">,</span> <span class="s1">&#39;NAME_CONTRACT_TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;CODE_GENDER&#39;</span><span class="p">])</span>
+<span class="n">train_final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We also drop the unique ID column which is useless for a machine learning model, and the columns with litteral valeus because now we have them in numerical values. Let’s print the head of the dataset now.</p>
+<a class="reference internal image-reference" href="_images/4.png"><img alt="_images/4.png" src="_images/4.png" style="width: 49%;" /></a>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="DataExploration.html" class="btn btn-neutral float-left" title="Data exploration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Models.html" class="btn btn-neutral float-right" title="Modeling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nadhem KHLIJ Bilal LOUKILI Gautier COLSON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -2,12 +2,16 @@
 Welcome to applicationsOfBigData's documentation!
 =================================================
 
+Contents:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 5
 
-   loan
+   Dataset_Info
+   DataExploration
+   FeatureEngineering
+   Models
+   Notebook
 
 Indices and tables
 ==================
